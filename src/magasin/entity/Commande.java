@@ -15,6 +15,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -40,6 +43,75 @@ public class Commande implements Serializable {
     private Date dateLivraison;
     @Embedded
     private Adresse adresseLivraison;
+    @ManyToOne
+    @JoinColumn(name = "id_client")
+    private Client client;
+
+    public String getMoyenPaiement() {
+        return moyenPaiement;
+    }
+
+    public void setMoyenPaiement(String moyenPaiement) {
+        this.moyenPaiement = moyenPaiement;
+    }
+
+    public Statut getStatut() {
+        return statut;
+    }
+
+    public void setStatut(Statut statut) {
+        this.statut = statut;
+    }
+
+    public Integer getPrixTotal() {
+        return prixTotal;
+    }
+
+    public void setPrixTotal(Integer prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    public Integer getFraisDePort() {
+        return fraisDePort;
+    }
+
+    public void setFraisDePort(Integer fraisDePort) {
+        this.fraisDePort = fraisDePort;
+    }
+
+    public Date getDateEtHeure() {
+        return dateEtHeure;
+    }
+
+    public void setDateEtHeure(Date dateEtHeure) {
+        this.dateEtHeure = dateEtHeure;
+    }
+
+    public Date getDateLivraison() {
+        return dateLivraison;
+    }
+
+    public void setDateLivraison(Date dateLivraison) {
+        this.dateLivraison = dateLivraison;
+    }
+
+    public Adresse getAdresseLivraison() {
+        return adresseLivraison;
+    }
+
+    public void setAdresseLivraison(Adresse adresseLivraison) {
+        this.adresseLivraison = adresseLivraison;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+    
+    
     public Long getId() {
         return id;
     }
