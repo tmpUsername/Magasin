@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  */
 public class MagasinDBTest {
     
-    @Test
+//    @Test
     public void test(){
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
@@ -36,5 +36,13 @@ public class MagasinDBTest {
         em.persist(prod);
         em.getTransaction().commit();
     }
-    
+    @Test
+    public void testListeProdCategorie(){
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        
+        Categorie cat = em.find(Categorie.class, 2L);
+        for (Produit p : cat.getProduits()) {
+            System.out.println(p);
+        }
+    }
 }
