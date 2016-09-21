@@ -23,8 +23,16 @@ public class MagasinDBTest {
         
         em.getTransaction().begin();
         Categorie cat = new Categorie();
-        cat.setNom("Talon");
+        cat.setNom("Basket");
         em.persist(cat);
+        
+        Categorie cat2 = new Categorie();
+        cat2.setNom("Lunette de soleil");
+        em.persist(cat2);
+        
+        Produit prod = new Produit();
+        prod.setTitre("Ray-ban");
+        em.persist(prod);
         em.getTransaction().commit();
     }
     
