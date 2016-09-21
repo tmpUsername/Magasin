@@ -102,7 +102,9 @@ public class Produit implements Serializable {
 
     @Override
     public String toString() {
-        return "magasin.entity.Produit[ id=" + id + " ]";
+        return "Produit{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", prix=" + prix + ", stock=" + stock + ", categorie=" + categorie + '}';
     }
+
+    
     
 }
