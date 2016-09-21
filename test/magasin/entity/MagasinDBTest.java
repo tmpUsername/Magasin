@@ -32,6 +32,7 @@ public class MagasinDBTest {
         
         Produit prod = new Produit();
         prod.setTitre("Ray-ban");
+        prod.setCategorie(cat2);
         em.persist(prod);
         em.getTransaction().commit();
     }

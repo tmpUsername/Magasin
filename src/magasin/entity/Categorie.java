@@ -26,18 +26,8 @@ public class Categorie implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
-    @ManyToOne
-    @JoinColumn(name = "id_categorie")
-    private Categorie categorie;
+    
 
-    public Categorie getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
-    }
-     
     public String getNom() {
         return nom;
     }

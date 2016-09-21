@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -26,6 +28,17 @@ public class Produit implements Serializable {
     private String description;
     private Integer prix;
     private Integer stock;
+    @ManyToOne
+    @JoinColumn(name = "id_categorie")
+    private Categorie categorie;
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
     
     public Long getId() {
         return id;
