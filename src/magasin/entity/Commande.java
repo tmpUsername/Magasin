@@ -142,7 +142,9 @@ public class Commande implements Serializable {
 
     @Override
     public String toString() {
-        return "magasin.entity.Commande[ id=" + id + " ]";
+        return "Commande{" + "id=" + id + ", moyenPaiement=" + moyenPaiement + ", statut=" + statut + ", prixTotal=" + prixTotal + ", fraisDePort=" + fraisDePort + ", dateEtHeure=" + dateEtHeure + ", dateLivraison=" + dateLivraison + ", adresseLivraison=" + adresseLivraison + ", client=" + client + '}';
     }
+
+   
     
 }
