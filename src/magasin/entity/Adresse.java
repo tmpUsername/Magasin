@@ -5,10 +5,13 @@
  */
 package magasin.entity;
 
+import javax.persistence.Embeddable;
+
 /**
  *
  * @author admin
  */
+@Embeddable
 public class Adresse {
     private Integer num;
     private String rue;
