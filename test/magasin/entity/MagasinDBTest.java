@@ -36,13 +36,45 @@ public class MagasinDBTest {
         em.persist(prod);
         em.getTransaction().commit();
     }
-    @Test
+    //@Test
     public void testListeProdCategorie(){
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
         Categorie cat = em.find(Categorie.class, 2L);
         for (Produit p : cat.getProduits()) {
             System.out.println(p);
+        }
+    }
+    
+    //@Test
+    public void testCommandeSet(){
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        
+        em.getTransaction().begin();
+        Client cli = new Client();
+        cli.setLogin("Michel");
+        em.persist(cli);
+        
+        Client cli2 = new Client();
+        cli2.setLogin("Louis");
+        em.persist(cli2);
+        
+        Commande com = new Commande();
+        com.setClient(cli2);
+        em.persist(com);
+        em.getTransaction().commit();
+        
+        
+          
+    }
+    
+    @Test
+    public void testListeClientCommande(){
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        
+        Client cl = em.find(Client.class, 2L);
+        for (Commande c : cl.getCommandes()) {
+            System.out.println(c);
         }
     }
 }
