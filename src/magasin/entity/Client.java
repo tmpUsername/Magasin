@@ -106,7 +106,9 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return "magasin.entity.Client[ id=" + id + " ]";
+        return "Client{" + "id=" + id + ", login=" + login + ", email=" + email + ", mdp=" + mdp + ", adresse=" + adresse + ", commandes=" + commandes + '}';
     }
+
+  
     
 }
