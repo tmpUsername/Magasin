@@ -8,6 +8,7 @@ package magasin.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javafx.scene.chart.PieChart;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -37,7 +38,8 @@ public class Commande implements Serializable {
     private Date dateEtHeure;
     @Temporal(TemporalType.DATE)
     private Date dateLivraison;
-    
+    @Embedded
+    private Adresse adresseLivraison;
     public Long getId() {
         return id;
     }
