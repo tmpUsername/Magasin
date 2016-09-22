@@ -92,7 +92,7 @@ public class MagasinDBTest {
     }
 
     @Test
-    public void testProdBasket() {
+    public void testProdBasketOK() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
         Produit p = em.find(Produit.class, 1L);
@@ -100,7 +100,7 @@ public class MagasinDBTest {
     }
 
     @Test
-    public void nBcommandeLoulou() {
+    public void nBcommandeLoulouOK() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
         Client cl = em.find(Client.class, 3L);
@@ -108,7 +108,7 @@ public class MagasinDBTest {
     }
 
     @Test
-    public void commandeTroisPasseParLoulou() {
+    public void commandeTroisPasseParLoulouOK() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
         Commande com = em.find(Commande.class, 3L);
@@ -116,7 +116,7 @@ public class MagasinDBTest {
     }
 
     @Test
-    public void commande2PasseParRiri() {
+    public void commande2PasseParRiriKO() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
         Commande com = em.find(Commande.class, 2L);
