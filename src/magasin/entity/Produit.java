@@ -34,7 +34,7 @@ public class Produit implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_categorie")
     private Categorie categorie;
-    @ManyToMany(mappedBy = "commande_produit")
+    @ManyToMany(mappedBy = "produits")
     private List<Commande> commandes= new ArrayList<>();
 
     public List<Commande> getCommandes() {
