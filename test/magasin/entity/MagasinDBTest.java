@@ -28,14 +28,13 @@ public class MagasinDBTest {
         em.getTransaction().begin();
         Query query = em.createQuery("DELETE FROM Produit p");
         query.executeUpdate();
-        
+
         em.createQuery("DELETE FROM Categorie c").executeUpdate();
         em.createQuery("DELETE FROM Commande c").executeUpdate();
         em.createQuery("DELETE FROM Client c").executeUpdate();
-        
-        
+
         em.getTransaction().commit();
-        
+
         //ajoute des données
         em.getTransaction().begin();
         Categorie cat = new Categorie();
@@ -54,22 +53,41 @@ public class MagasinDBTest {
         prod.setId(1L);
         em.persist(prod);
         em.getTransaction().commit();
-        
+
         em.getTransaction().begin();
         Client cli = new Client();
         cli.setId(1L);
-        cli.setLogin("Michel");
+        cli.setLogin("Riri");
         em.persist(cli);
 
         Client cli2 = new Client();
-        cli2.setLogin("Louis");
+        cli2.setLogin("Fifi");
         cli2.setId(2L);
         em.persist(cli2);
 
-        Commande com = new Commande();
-        com.setClient(cli2);
-        com.setId(1L);
-        em.persist(com);
+        Client cli3 = new Client();
+        cli3.setLogin("Loulou");
+        cli3.setId(3L);
+        em.persist(cli3);
+
+        Commande com1 = new Commande();
+        com1.setClient(cli);
+        com1.setId(1L);
+        com1.setPrixTotal(1000);
+        em.persist(com1);
+
+        Commande com2 = new Commande();
+        com2.setClient(cli3);
+        com2.setId(2L);
+        com2.setPrixTotal(5);
+        em.persist(com2);
+
+        Commande com3 = new Commande();
+        com3.setClient(cli3);
+        com3.setId(3L);
+        com3.setPrixTotal(2);
+        em.persist(com3);
+
         em.getTransaction().commit();
     }
 
@@ -79,21 +97,39 @@ public class MagasinDBTest {
 
         Categorie cat = em.find(Categorie.class, 1L);
         for (Produit p : cat.getProduits()) {
-            if(!p.getTitre().equals("Basket")){
+            if (!p.getTitre().equals("Basket")) {
                 Assert.fail("l'élèment Basket n'est pas trouvé!");
             }
         }
     }
 
     @Test
-    public void testListeClientCommande() {
+    public void nBcommandeLoulo() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
-        Client cl = em.find(Client.class, 1L);
-        for (Commande c : cl.getCommandes()) {
-            if (!c.getClient().getLogin().equals("Michel")){
-                Assert.fail("On a pas le client Michel pour la commande");
-            }
+        Client cl = em.find(Client.class, 3L);
+        if (cl.getCommandes().size() != 2) {
+            Assert.fail("Mauvais nombre de client");
+        }
+    }
+    
+    @Test
+    public void commandeTroisPasseParLoulou(){
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        
+        Commande com = em.find(Commande.class, 3L);
+        if (!com.getClient().getLogin().equals("Loulou")){
+            Assert.fail("Le client de la commande 3 n'est pas loulou" + com.getClient().getLogin());
+        }
+    }
+    
+    @Test
+    public void commande2PasseParRiri() {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        
+        Commande com = em.find(Commande.class, 2L);
+        if (com.getClient().getLogin().equals("Riri")){
+            Assert.fail("Le client de la commande 2 n'est pas riri");
         }
     }
 }
