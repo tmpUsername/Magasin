@@ -73,9 +73,7 @@ public class Client implements Serializable {
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
     }
-    
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -109,6 +107,4 @@ public class Client implements Serializable {
         return "Client{" + "id=" + id + ", login=" + login + ", email=" + email + ", mdp=" + mdp + ", adresse=" + adresse + "}";
     }
 
-  
-    
 }

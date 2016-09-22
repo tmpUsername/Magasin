@@ -106,20 +106,20 @@ public class MagasinDBTest {
         Client cl = em.find(Client.class, 3L);
         Assert.assertEquals("Mauvais nombre de client, nombre trouvé " + cl.getCommandes().size(), 2, cl.getCommandes().size());
     }
-    
+
     @Test
-    public void commandeTroisPasseParLoulou(){
+    public void commandeTroisPasseParLoulou() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-        
+
         Commande com = em.find(Commande.class, 3L);
         Assert.assertEquals("Le client de la commande 3 n'est pas loulou mais par " + com.getClient().getLogin(), "Loulou", com.getClient().getLogin());
     }
-    
+
     @Test
     public void commande2PasseParRiri() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-        
+
         Commande com = em.find(Commande.class, 2L);
-        Assert.assertNotEquals("Le client de la commande 2 n'est pas riri, mais pas "+ com.getClient().getLogin(),  "Riri", com.getClient().getLogin());
+        Assert.assertNotEquals("Le client de la commande 2 n'est pas riri, mais pas " + com.getClient().getLogin(), "Riri", com.getClient().getLogin());
     }
 }

@@ -39,7 +39,7 @@ public class Produit implements Serializable {
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -105,6 +105,4 @@ public class Produit implements Serializable {
         return "Produit{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", prix=" + prix + ", stock=" + stock + ", categorie=" + categorie + '}';
     }
 
-    
-    
 }

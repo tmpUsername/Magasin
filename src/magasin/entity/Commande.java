@@ -7,7 +7,6 @@ package magasin.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javafx.scene.chart.PieChart;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -110,8 +108,7 @@ public class Commande implements Serializable {
     public void setClient(Client client) {
         this.client = client;
     }
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -145,6 +142,4 @@ public class Commande implements Serializable {
         return "Commande{" + "id=" + id + ", moyenPaiement=" + moyenPaiement + ", statut=" + statut + ", prixTotal=" + prixTotal + ", fraisDePort=" + fraisDePort + ", dateEtHeure=" + dateEtHeure + ", dateLivraison=" + dateLivraison + ", adresseLivraison=" + adresseLivraison + ", client=" + client + '}';
     }
 
-   
-    
 }
