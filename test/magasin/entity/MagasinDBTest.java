@@ -50,9 +50,7 @@ public class MagasinDBTest {
         prod.setCategorie(cat2);
         prod.setId(1L);
         em.persist(prod);
-        em.getTransaction().commit();
 
-        em.getTransaction().begin();
         Client cli = new Client();
         cli.setId(1L);
         cli.setLogin("Riri");
