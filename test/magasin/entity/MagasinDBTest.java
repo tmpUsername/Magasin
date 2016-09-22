@@ -49,6 +49,7 @@ public class MagasinDBTest {
         prod.setTitre("Ray-ban");
         prod.setCategorie(cat2);
         prod.setId(1L);
+        cat2.getProduits().add(prod);
         em.persist(prod);
 
         Client cli = new Client();
@@ -70,18 +71,21 @@ public class MagasinDBTest {
         com1.setClient(cli);
         com1.setId(1L);
         com1.setPrixTotal(1000);
+        cli.getCommandes().add(com1);
         em.persist(com1);
 
         Commande com2 = new Commande();
         com2.setClient(cli3);
         com2.setId(2L);
         com2.setPrixTotal(5);
+        cli3.getCommandes().add(com2);
         em.persist(com2);
 
         Commande com3 = new Commande();
         com3.setClient(cli3);
         com3.setId(3L);
         com3.setPrixTotal(2);
+        cli3.getCommandes().add(com3);
         em.persist(com3);
 
         em.getTransaction().commit();
