@@ -96,7 +96,7 @@ public class MagasinDBTest {
     }
 
     @Test
-    public void nBcommandeLoulo() {
+    public void nBcommandeLoulou() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
         Client cl = em.find(Client.class, 3L);
