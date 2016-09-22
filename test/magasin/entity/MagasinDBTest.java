@@ -20,8 +20,8 @@ import org.junit.BeforeClass;
  */
 public class MagasinDBTest {
 
-    @Before
-    public void affectation() {
+    @BeforeClass
+    public static void affectation() {
         //vide toutes les tables
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
