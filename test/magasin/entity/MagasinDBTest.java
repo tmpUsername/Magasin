@@ -24,9 +24,8 @@ public class MagasinDBTest {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
         em.getTransaction().begin();
-        Query query = em.createQuery("DELETE FROM Produit p");
-        query.executeUpdate();
-
+        Query query;
+        em.createQuery("DELETE FROM Produit p").executeUpdate();
         em.createQuery("DELETE FROM Categorie c").executeUpdate();
         em.createQuery("DELETE FROM Commande c").executeUpdate();
         em.createQuery("DELETE FROM Client c").executeUpdate();
