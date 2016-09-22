@@ -92,15 +92,11 @@ public class MagasinDBTest {
     }
 
     @Test
-    public void testListeProdCategorie() {
+    public void testProdBasket() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
-        Categorie cat = em.find(Categorie.class, 1L);
-        for (Produit p : cat.getProduits()) {
-            if (!p.getTitre().equals("Basket")) {
-                Assert.fail("l'élèment Basket n'est pas trouvé!");
-            }
-        }
+        Produit p = em.find(Produit.class, 1L);
+        Assert.assertEquals("Le produit n'est pas Ray-ban mais" + p.getTitre(), p.getTitre(), "Ray-ban");
     }
 
     @Test
@@ -108,9 +104,7 @@ public class MagasinDBTest {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
 
         Client cl = em.find(Client.class, 3L);
-        if (cl.getCommandes().size() != 2) {
-            Assert.fail("Mauvais nombre de client, nombre trouvé " + cl.getCommandes().size());
-        }
+        Assert.assertEquals("Mauvais nombre de client, nombre trouvé " + cl.getCommandes().size(), cl.getCommandes().size(), 2);
     }
     
     @Test
@@ -118,9 +112,7 @@ public class MagasinDBTest {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
         Commande com = em.find(Commande.class, 3L);
-        if (!com.getClient().getLogin().equals("Loulou")){
-            Assert.fail("Le client de la commande 3 n'est pas loulou mais par " + com.getClient().getLogin());
-        }
+        Assert.assertEquals("Le client de la commande 3 n'est pas loulou mais par " + com.getClient().getLogin(), com.getClient().getLogin(), "Loulou");
     }
     
     @Test
@@ -128,8 +120,6 @@ public class MagasinDBTest {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
         Commande com = em.find(Commande.class, 2L);
-        if (com.getClient().getLogin().equals("Riri")){
-            Assert.fail("Le client de la commande 2 n'est pas riri, mais pas "+ com.getClient().getLogin());
-        }
+        Assert.assertNotEquals("Le client de la commande 2 n'est pas riri, mais pas "+ com.getClient().getLogin(), com.getClient().getLogin(), "Riri");
     }
 }
