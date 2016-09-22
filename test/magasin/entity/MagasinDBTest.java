@@ -109,7 +109,7 @@ public class MagasinDBTest {
 
         Client cl = em.find(Client.class, 3L);
         if (cl.getCommandes().size() != 2) {
-            Assert.fail("Mauvais nombre de client");
+            Assert.fail("Mauvais nombre de client, nombre trouvé " + cl.getCommandes().size());
         }
     }
     
@@ -119,7 +119,7 @@ public class MagasinDBTest {
         
         Commande com = em.find(Commande.class, 3L);
         if (!com.getClient().getLogin().equals("Loulou")){
-            Assert.fail("Le client de la commande 3 n'est pas loulou" + com.getClient().getLogin());
+            Assert.fail("Le client de la commande 3 n'est pas loulou mais par " + com.getClient().getLogin());
         }
     }
     
@@ -129,7 +129,7 @@ public class MagasinDBTest {
         
         Commande com = em.find(Commande.class, 2L);
         if (com.getClient().getLogin().equals("Riri")){
-            Assert.fail("Le client de la commande 2 n'est pas riri");
+            Assert.fail("Le client de la commande 2 n'est pas riri, mais pas "+ com.getClient().getLogin());
         }
     }
 }
