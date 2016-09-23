@@ -87,7 +87,7 @@ public class MagasinDBTest {
         cli3.getCommandes().add(com3);
         em.persist(com3);
 
-        em.getTransaction().commit();
+        em.getTransaction().commit();//
     }
 
     @Test
